@@ -19,5 +19,5 @@ export function setClick(selector, callback) {
     event.preventDefault();
     callback();
   });
-  qs(selector).addEventListener("click", callback);
+  qs(selector).addEventListener('click', callback);
 }
