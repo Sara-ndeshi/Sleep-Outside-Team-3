@@ -1,4 +1,8 @@
-import { getLocalStorage, setLocalStorage } from './utils.mjs';
+import {
+    getLocalStorage,
+    setLocalStorage,
+    getDiscountPercent,
+} from './utils.mjs';
 
 export default class ProductDetails {
     constructor(productId, dataSource) {
@@ -47,5 +51,18 @@ export default class ProductDetails {
             this.product.DescriptionHtmlSimple;
 
         document.getElementById('addToCart').dataset.id = this.product.Id;
+        const discount = getDiscountPercent(this.product);
+        if (discount > 0) {
+            const saved = (
+                this.product.SuggestedRetailPrice - this.product.FinalPrice
+            ).toFixed(2);
+            document
+                .querySelector(".product-card__price")
+                .insertAdjacentHTML(
+                    "afterend",
+                    `<p class="discount-badge discount-badge--detail">${discount}% off, save $${saved}</p>`,
+                );
+        }
     }
+
 }

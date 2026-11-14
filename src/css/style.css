@@ -274,3 +274,9 @@ footer {
   padding: 0.2em 0.6em;
   border-radius: 4px;
 }
+
+.discount-badge--detail {
+  position: static;
+  display: inline-block;
+  margin: 0.5rem 0;
+}
