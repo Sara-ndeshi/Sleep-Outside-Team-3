@@ -41,3 +41,10 @@ export function renderListWithTemplate(
   const htmlStrings = list.map(templateFn);
   parentElement.insertAdjacentHTML(position, htmlStrings.join(''));
 }
+
+export function getDiscountPercent(product) {
+  const retail = product.SuggestedRetailPrice;
+  const price = product.FinalPrice;
+  if (!retail || retail <= price) return 0;
+  return Math.round(((retail - price) / retail) * 100);
+}
