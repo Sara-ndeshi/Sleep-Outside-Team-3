@@ -40,7 +40,7 @@ export default class ProductDetails {
             this.product.NameWithoutBrand;
 
         const image = document.querySelector('.product-detail img');
-        image.src = this.product.Image;
+        image.src = this.product.Images.PrimaryLarge;
         image.alt = this.product.NameWithoutBrand;
 
         document.querySelector('.product-card__price').textContent =
