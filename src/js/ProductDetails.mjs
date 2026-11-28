@@ -40,13 +40,13 @@ export default class ProductDetails {
             this.product.NameWithoutBrand;
 
         const image = document.querySelector('.product-detail img');
-        image.src = this.product.Image;
+        image.src = this.product.Images.PrimaryLarge;
         image.alt = this.product.NameWithoutBrand;
 
         document.querySelector('.product-card__price').textContent =
             `$${this.product.FinalPrice}`;
         document.querySelector('.product__color').textContent =
-            this.product.Colors[0].ColorName;
+            this.product.Colors?.[0]?.ColorName ?? '';
         document.querySelector('.product__description').innerHTML =
             this.product.DescriptionHtmlSimple;
 
