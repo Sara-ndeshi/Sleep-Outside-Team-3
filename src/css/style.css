@@ -301,3 +301,13 @@ footer {
   width: 100px;
   height: 100px;
 }
+.hide {
+  display: none;
+}
+
+.cart-footer {
+  text-align: right;
+  padding: 1rem 2rem;
+  font-size: 1.3rem;
+  font-weight: bold;
+}

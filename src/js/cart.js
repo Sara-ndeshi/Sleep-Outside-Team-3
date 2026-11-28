@@ -3,14 +3,23 @@ import { getLocalStorage, loadHeaderFooter } from './utils.mjs';
 loadHeaderFooter();
 
 function renderCartContents() {
-  const cartItems = getLocalStorage('so-cart') || []; // read the saved list (or start empty)
+  const cartItems = getLocalStorage('so-cart') || [];
+  const cartFooter = document.querySelector('.cart-footer');
+
   if (cartItems.length === 0) {
     document.querySelector('.product-list').innerHTML =
       '<li>Your cart is empty.</li>';
+    cartFooter.classList.add('hide');
     return;
   }
+
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   document.querySelector('.product-list').innerHTML = htmlItems.join('');
+
+  const total = cartItems.reduce((sum, item) => sum + item.FinalPrice, 0);
+  document.querySelector('.cart-total').textContent =
+    `Total: $${total.toFixed(2)}`;
+  cartFooter.classList.remove('hide');
 }
 
 function cartItemTemplate(item) {
