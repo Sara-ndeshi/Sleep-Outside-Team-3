@@ -46,7 +46,7 @@ export default class ProductDetails {
         document.querySelector('.product-card__price').textContent =
             `$${this.product.FinalPrice}`;
         document.querySelector('.product__color').textContent =
-            this.product.Colors[0].ColorName;
+            this.product.Colors?.[0]?.ColorName ?? '';
         document.querySelector('.product__description').innerHTML =
             this.product.DescriptionHtmlSimple;
 
